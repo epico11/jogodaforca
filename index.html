@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Jogo da Forquinha</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="fundoRanking">
+        <div id="navRanking">
+            <div id="topoRanking">
+                <div id="tituloRanking">RANKING</div>
+
+                <div id="opcoesRanking">
+                    <button id="btnRankPontos">Pontos</button>
+                    <button id="btnRankSequencia">Melhor seq...</button>
+                    <button id="btnRankAcertos">Acertos</button>
+                </div>
+            </div>
+        <div id="rankingLista"></div>
+    </div>
+
+    <div id="fecharRanking">
+        <span id="closeRanking">✖️</span>
+    </div>
+</div>
+
+    <!-- cabeçalho -->
+    <header>
+        <i id="menu_icon" class="fa-solid fa-bars" onclick="menuShow()"></i>
+        <span id="nomeJogador">carregando...</span>
+        <i id="mode_icon" class="fa-solid fa-moon"></i>
+    </header>
+
+    <!-- editar nick do jogador logado -->
+    <div id="modalNickEdit">
+        <div id="janelaEditNick">
+            <div id="cabecalhoEditNick">
+                EDITE SEU USERNAME
+            </div>
+            <div id="conteudoEditNick">
+                <input type="text" id="inputNick">
+                <!-- <button id="salvarNick" onclick="closeEditarNick()">SALVAR</button> -->
+                <button id="salvarNick" onclick="salvarUsername()">SALVAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- menu -->
+    <div id="menu-list" class="open-menu-list">
+        <nav id="navMenu">
+            <span id="ranking">🏆 Ranking</span>
+            <span onclick="openRegras()">📜 Info sobre o ranking</span>
+            <span onclick="sobre()">💬 Sobre o game</span>
+            <span>🔎 Confira outros projetinhos</span>
+            <span id="editNick" onclick="openEditarNick()" style="display: flex;">✏️ Editar username</span>
+            <span id="excluirContaa" style="display: flex;">🗑️ Excluir conta</span>
+            <span id="spanLoginGoogle">👤 Entrar com Google</span>
+            <span id="spanLogoutGoogle" >➜] sair da conta</span>
+        </nav>
+    </div>
+
+    <!-- mostrar pontos -->
+    <div id="fundo-pontos">
+        <span id="conteudoPontos">0 xp</span>
+        <span id="textoEntrarComGoogle">Clique no menu e entre com a conta google para pontuar e participar do ranking!!!</span>
+    </div>
+
+    <!-- janela do jogo -->
+    <div id="fundo1">
+        <div class="container">
+            <div id="fundoContainer">
+                <div id="fundoTipoP">
+                    <input type="hidden" id="palavraAtribuida">
+                    <input type="text" id="tipoP" disabled>
+                </div>
+
+                <!-- score -->
+                <div id="fundoCanvas">
+                    <canvas id="forca" width="200" height="250"></canvas>
+                </div>
+
+                <div id="palavra"></div>
+
+                <div id="teclado"></div>
+
+                <p id="mensagem"></p>
+                <!-- <button onclick="reiniciar()">Reiniciar</button> -->
+                <!-- <button onclick="reiniciar()">Nova Palavra</button> -->
+                <input type="text" id="sequencia" disabled value="Sequência: 0">
+            </div>
+        </div>
+    </div>
+
+    <!-- rodapé -->
+    <footer>
+        <a href="https://github.com/epico11/"><i id="github_icon" class="fa-brands fa-github fa-beat"></i></a>     
+    </footer>
+
+    <!-- aparece quando acerta a palavras -->
+    <div id="winFundo">
+        <div id="notificarWin">
+            <div id="cabecalhoWin">
+                <button type="button" onclick="winClose()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="conteudoWin">
+                <div><p id="win">PARABÉNS!!! 😎</p> </div>
+                <div><p id="repostaWin"></p></div>
+            </diV>
+        </div>
+    </div>
+
+    <!-- aparece quando não acerta a palavras -->
+    <div id="gameOverFundo">
+        <div id="notificar">
+            <div id="cabecalho">
+                <button type="button" onclick="gameOverClose()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="conteudo">
+                <div id="imagemNotificar">
+                    <img src="imgs/trollfacetriste.png" alt="troll face" id="trollface">
+                </div> 
+                <div id="textoNotificar">
+                    <div>
+                        <p id="gameOver">Game over!</p> 
+                    </div>
+                    <div>
+                        <p id="reposta"></p>
+                        <p>Chutes errados: 6 | + 0 xp</p>
+                    </div>
+                </div>
+            </diV>
+        </div>
+    </div>
+
+    <div id="toastRodada"></div>
+ 
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
